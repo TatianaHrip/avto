@@ -1,13 +1,44 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class BonusMilesServiceTest {
+class BonusServiceTest {
 
     @org.junit.jupiter.api.Test
-    void calculate() {
-        BonusMilesService service = new BonusMilesService();
-        int price = 10_000;
-        int miles = service.calculate(price);
-        System.out.println(miles);
+    void bonusMilesLimitForRegistered_1() {
+        BonusService service = new BonusService();
+        // подготавливаем данные:
+
+        long amount = 1000_60;
+        boolean registered = true;
+        long expected = 30;
+
+        // вызываем целевой метод:
+        long actual = service.calculate(amount, registered);
+
+        assertEquals(expected, actual);
     }
 
-}
+
+    @Test
+
+    void bonusMilesLimitForNotRegistered_2() {
+            BonusService service = new BonusService();
+
+            // подготавливаем данные:
+            long amount = 1000;
+            boolean registered = true;
+            long expected = 500;
+
+        // вызываем целевой метод:
+        long actual = service.calculate(amount, registered);
+
+        assertEquals(expected, actual);
+
+        }
+
+
+
+   }
+
+

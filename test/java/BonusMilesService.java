@@ -1,8 +1,11 @@
-public class BonusMilesService {
-    public int calculate (int cost) {
-        int miles = cost / 20;
-        return miles;
-
+class BonusService {
+    public long calculate(long amount, boolean registered) {
+        int percent = registered ? 3 : 1;
+        long bonus = amount * percent / 100;
+        long limit = 500;
+        if (bonus > limit) {
+            bonus = limit;
+        }
+        return bonus;
     }
-
 }
