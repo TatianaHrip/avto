@@ -47,7 +47,26 @@ class BonusServiceTest {
         long actual = service.calculate(amount, registered);
         assertEquals(expected, actual);
     }
-}
 
+    @Test
+    void BonusMilesLimitForNoRegisteredAndOverLimit_4() {
+        BonusService service = new BonusService();
+        long amount = 1000_60;
+        boolean registered = false;
+        long expected = 500;
+        long actual = service.calculate(amount, registered);
+        assertEquals(expected, actual);
+    }
+    @Test
+    void BonusMilesLimitForNoRegisteredAndLimit_5() {
+        BonusService service = new BonusService();
+        long amount = 1060;
+        boolean registered = false;
+        long expected = 500;
+        long actual = service.calculate(amount, registered);
+        assertEquals(expected, actual);
+    }
+
+}
 
 
