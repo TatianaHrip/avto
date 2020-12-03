@@ -25,7 +25,7 @@ class BonusServiceTest {
         BonusService service = new BonusService();
 
         // подготавливаем данные:
-        long amount = 1000;
+        long amount = 1_000_000_60;
         boolean registered = true;
         long expected = 500;
 
@@ -41,9 +41,9 @@ class BonusServiceTest {
     void BonusMilesLimitRegisteredAndOverLimit_3() {
         BonusService service = new BonusService();
 
-        long amount = 20_000;
+        long amount = 1000_60;
         boolean registered = true;
-        long expected = 500;
+        long expected = 60;
         long actual = service.calculate(amount, registered);
         assertEquals(expected, actual);
     }
@@ -51,16 +51,18 @@ class BonusServiceTest {
     @Test
     void BonusMilesLimitForNoRegisteredAndOverLimit_4() {
         BonusService service = new BonusService();
-        long amount = 1000_60;
+        long amount = 1_000_000_60;
         boolean registered = false;
         long expected = 500;
         long actual = service.calculate(amount, registered);
         assertEquals(expected, actual);
     }
+
     @Test
     void BonusMilesLimitForNoRegisteredAndLimit_5() {
         BonusService service = new BonusService();
-        long amount = 1060;
+        long amount = 1000_60;
+        ;
         boolean registered = false;
         long expected = 500;
         long actual = service.calculate(amount, registered);
@@ -68,5 +70,3 @@ class BonusServiceTest {
     }
 
 }
-
-
